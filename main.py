@@ -309,12 +309,11 @@ def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_ou
                 discarded += 1
                 continue
 
-            if flag_corrected:
-                corrected += 1
-
             is_dup = add_episode(seen, episode)
             if is_dup:
                 duplicates += 1
+            elif flag_corrected: # only count the correction if the episode remains in the final output
+                corrected += 1
 
     # ── Sort and export ──────────────────────────────────────────────────────
     episodes_sorted = sorted(
