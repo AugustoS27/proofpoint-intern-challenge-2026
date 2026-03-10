@@ -97,8 +97,7 @@ def normalize_episode(episode: Episode) -> tuple:
         return episode, True, False
 
     # Snapshot of raw values to detect corrections later
-    original = (episode.season_number, episode.episode_number,
-                episode.episode_title, episode.air_date)
+    original = (episode.season_number, episode.episode_number, episode.episode_title.strip().lower(), episode.air_date.strip())
 
     episode.episode_title  = normalize_episode_title(episode.episode_title)
     episode.season_number  = normalize_numbers(episode.season_number)
@@ -106,8 +105,7 @@ def normalize_episode(episode: Episode) -> tuple:
     episode.air_date       = normalize_date(episode.air_date)
 
     # Compare normalised values against original to flag corrections
-    corrected = (str(episode.season_number), str(episode.episode_number),
-                 episode.episode_title, episode.air_date)
+    corrected = (str(episode.season_number), str(episode.episode_number), episode.episode_title, episode.air_date)
     if corrected != original:
         flag_corrected = True
 
