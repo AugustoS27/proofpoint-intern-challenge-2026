@@ -4,11 +4,11 @@
 
 | Metric                  | Count |
 |-------------------------|-------|
-| Total input records     | 3 |
-| Total output records    | 2 |
-| Discarded entries       | 1 |
-| Corrected entries       | 1 |
-| Duplicates detected     | 0 |
+| Total input records     | 900 |
+| Total output records    | 378 |
+| Discarded entries       | 80 |
+| Corrected entries       | 820 |
+| Duplicates detected     | 442 |
 
 ## Discard Reasons
 
@@ -31,7 +31,7 @@ When a field is present but invalid, it is corrected rather than discarded:
 | Episode Title  | Empty or whitespace only                       | Set to "untitled episode" |
 | Air Date       | Empty, unparseable, or logically impossible    | Set to "unknown"          |
 
-All text fields are also trimmed and normalized (collapsed whitespace, lowercased).
+All text fields are also trimmed and normalised (collapsed whitespace, lowercased).
 
 ## Deduplication Strategy
 
@@ -54,6 +54,6 @@ series name and at least one of the following composite keys:
 When duplicates are found, the **best** record is kept following this priority:
 
 1. Valid Air Date over "unknown"
-2. Known Episode Title over "untitled episode"  
+2. Known Episode Title over "untitled episode"
 3. Known Episode Number (> 0)
 4. First entry encountered in the file (tie-breaker)
