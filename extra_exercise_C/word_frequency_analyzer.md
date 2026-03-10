@@ -58,6 +58,4 @@ Las palabras se extraen con la regex `[a-záéíóúüñ]+`, que:
 
 - Convierte todo el texto a minúsculas antes de procesar
 - Extrae solo secuencias de letras, descartando puntuación, números y cualquier carácter especial (`—`, `…`, `¡`, etc.)
-- Soporta caracteres del español de forma nativa
-
-Este enfoque es más robusto que eliminar caracteres de `string.punctuation`, ya que ese set no cubre símbolos tipográficos ni puntuación no ASCII.
+- Soporta caracteres del español
