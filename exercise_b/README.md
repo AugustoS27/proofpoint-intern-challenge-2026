@@ -52,11 +52,11 @@ The tool will print a summary to the console and write the two output files auto
 ### Expected console output
 
 ```
-Input records  : 900
-Output records : 378
-Discarded      : 80
-Corrected      : 820
-Duplicates     : 442
+Input records  : 100
+Output records : 60
+Discarded      : 10
+Corrected      : 20
+Duplicates     : 30
 ```
 
 ---
