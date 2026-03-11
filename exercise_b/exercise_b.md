@@ -19,7 +19,7 @@ This tool processes that CSV and produces a clean, de-duplicated catalog.
 ## Project Structure
 
 ```
-proofpoint-intern-challenge-2026/
+exercise_b/
 ├── main.py
 ├── input/
 │   └── input_episodes.csv      ← input file (must be provided)
