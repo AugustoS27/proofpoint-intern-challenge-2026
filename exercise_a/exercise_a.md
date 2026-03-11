@@ -10,7 +10,7 @@ Finally, in courses related to Software Engineering and Systems Design, I incorp
 
 Overall, these experiences allowed me to build a solid foundation in programming and gain a broad understanding of the software lifecycle, from design to deployment.
 
-## 2. Describe a situation you had to resolve with a teammate from a study or work group
+## 2. Describe a situation you had to resolve with a teammate from a study or work group.
 
 During the Information Systems Design course, I participated in a group project that lasted throughout the academic year. The objective was to simulate the development of a real system based on a set of initial requirements representing the needs of a company.
 
@@ -20,7 +20,7 @@ Subsequently, we implemented the system using an architecture composed of a fron
 
 Finally, the system was refactored to incorporate design patterns required by the course, which involved modifying the code structure to improve its organization, decoupling, and maintainability. This project allowed me to experience the different stages of software development in practice, from analysis and modeling to implementation and architectural improvement.
 
-## 3. Describe your personal learning plans or development expectations in technical areas in the short and long term
+## 3. Describe your personal learning plans or development expectations in technical areas in the short and long term.
 
 In the short term, my goal is to begin applying the knowledge I have acquired during my studies in real development environments, which will allow me to consolidate and deepen my skills. I also seek to continue expanding my knowledge of software development while I finish my degree in Systems Engineering.
 
