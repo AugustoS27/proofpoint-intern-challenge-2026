@@ -4,9 +4,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-# ─────────────────────────────────────────────
+
+
 #  Data model
-# ─────────────────────────────────────────────
 
 class Episode:
     """Represents a single episode record from the CSV."""
@@ -19,18 +19,15 @@ class Episode:
         # Score used during deduplication to keep the most complete record
         self.quality        = 0
 
-# ─────────────────────────────────────────────
 #  Parsing
-# ─────────────────────────────────────────────
+
 
 def parse_episode(row: list[str]) -> Episode:
     """Builds an Episode from a csv.reader row (already split into fields)."""
     padded = (row + [""] * 5)[:5]
     return Episode(*padded)
 
-# ─────────────────────────────────────────────
 #  Normalisation helpers
-# ─────────────────────────────────────────────
 
 def normalize_series_name(text: str) -> str:
     """Trims, collapses inner whitespace, and lowercases the series name."""
@@ -68,9 +65,7 @@ def normalize_date(date_str: str) -> str:
     except ValueError:
         return "unknown"
 
-# ─────────────────────────────────────────────
 #  Episode normalisation + discard logic
-# ─────────────────────────────────────────────
 
 def normalize_episode(episode: Episode) -> tuple:
     """
@@ -124,9 +119,7 @@ def normalize_episode(episode: Episode) -> tuple:
 
     return episode, flag_discard, flag_corrected
 
-# ─────────────────────────────────────────────
 #  Deduplication
-# ─────────────────────────────────────────────
 
 def get_dedup_key(episode: Episode) -> tuple:
     """
@@ -170,9 +163,7 @@ def add_episode(seen: dict, new_episode: Episode) -> bool:
     seen[key] = new_episode
     return False  # new entry
 
-# ─────────────────────────────────────────────
 #  Output
-# ─────────────────────────────────────────────
 
 def export_episodes_to_csv(episodes: list[Episode], output_path: str):
     """Writes the cleaned and sorted episode list to a CSV file."""
@@ -255,9 +246,7 @@ When duplicates are found, the **best** record is kept following this priority:
     with open(output_path, mode='w', encoding='utf-8') as f:
         f.write(report)
 
-# ─────────────────────────────────────────────
 #  Main pipeline
-# ─────────────────────────────────────────────
 
 def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_output: str):
     """
@@ -272,7 +261,7 @@ def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_ou
 
     EXPECTED_HEADERS = ["SeriesName", "SeasonNumber", "EpisodeNumber", "EpisodeTitle", "AirDate"]
 
-    # ── File-level validation ────────────────────────────────────────────────
+    # File-level validation
     if not os.path.exists(file_path):
         print(f"Error: File not found -> {file_path}")
         return
@@ -284,7 +273,7 @@ def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_ou
     with open(file_path, mode='r', encoding='utf-8-sig') as file:
         reader = csv.reader(file)
 
-        # ── Header validation ────────────────────────────────────────────────
+        # Header validation
         try:
             headers = next(reader)
         except StopIteration:
@@ -297,7 +286,7 @@ def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_ou
             print(f"Found:    {headers}")
             return
 
-        # ── Row processing ───────────────────────────────────────────────────
+        # Row processing
         for row in reader:
             total += 1
             episode = parse_episode(row)
@@ -313,7 +302,7 @@ def read_episodes_from_csv(file_path: str, path_file_output: str, path_report_ou
             elif flag_corrected: # only count the correction if the episode remains in the final output
                 corrected += 1
 
-    # ── Sort and export ──────────────────────────────────────────────────────
+    # Sort and export
     episodes_sorted = sorted(
         seen.values(),
         key=lambda e: (e.series_name, e.season_number, e.episode_number)
